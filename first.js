@@ -3,7 +3,6 @@ const fs = require('fs');
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
-const https = require("https");
 const { send } = require("process");
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -19,8 +18,13 @@ app.get('/', (req,res) => {
     }
     
 })
+
 app.get('/first.css', (req, res) => {
     res.sendFile(__dirname+'/first.css');
+})
+
+app.get('/demo.js', (req, res) => {
+    res.sendFile(__dirname+'/demo.js');
 })
 
 app.post('/addinfo', (req, res) => {
@@ -120,4 +124,4 @@ app.get('/userData', (req, res) => {
 
 
 
-app.listen(3000);
+app.listen(port);
